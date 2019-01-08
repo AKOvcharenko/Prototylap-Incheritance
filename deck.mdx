@@ -10,42 +10,60 @@ export { default as theme } from './theme'
 
 # JavaScript Prototypal Inheritance
 
-Slides: https://akovcharenko.github.io/Prototypal-Inheritance
-Workshop repo: http://bit.ly/react-state-workshop
-
 Author: Artem Ovcharenko
 
----
+Slides: https://akovcharenko.github.io/Prototypal-Inheritance
 
-## Two parts
-
-1. Revision of ES2015 and beyond features
-2. Revision of the basics of React
+Workshop repo: https://akovcharenko.github.io/Prototypal-Inheritance-workshop
 
 ---
 
-## Revision of ES2015 and beyond features
-
-1. Clone
-   https://github.com/Gelio/es2015-and-beyond-workshop
-2. Read the **README** of that project
-3. Complete all the exercises
-
-```notes
-Exercises will be done together with the _teacher_.
-
-Feel free to work at your own pace
-```
+```js
+var user = {
+    id: 1782,
+    created: Date.now(),
+    banned: false,
+    hasAccessTo: defaultAccessList,
+    allowComments: true,
+    comments: getUserComments(1782),
+}
 
 ---
 
-## Features not covered
+## Constructor
 
-- Promises + `async`/`await`
-- Generators
-- New array methods
-- Default parameters
-- `for ... of` loops
+Constructor is a function which creates an "instance".
+
+```js
+function createUser(userId, getUserComments, defaultAccessList) {
+    return {
+        id: userId,
+        created: Date.now(),
+        banned: false,
+        hasAccessTo: defaultAccessList,
+        allowComments: true,
+        comments: getUserComments(userId),
+    };
+}
+
+---
+
+## Constructor
+
+Constructor is a function which creates an "instance", but for this it uses 'new' keyword.
+
+```js
+function User(id) {
+    function getUserComments(id) {
+       //smth;
+    }
+
+    this.id = id;
+    this.created = Date.now();
+    this.banned = false;
+    this.allowComments = true;
+    this.comments = getUserComments(id)
+}
 
 ---
 
