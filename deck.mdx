@@ -50,7 +50,7 @@ function createUser(userId, getUserComments, defaultAccessList) {
 
 ## Constructor
 
-Constructor is a function which creates an "instance", but for this it uses 'new' keyword.
+Constructor is a function which creates an "instance", but via 'new' keyword.
 
 ```js
 function User(id) {
@@ -62,177 +62,22 @@ function User(id) {
     this.created = Date.now();
     this.banned = false;
     this.allowComments = true;
-    this.comments = getUserComments(id)
+    this.hasAccessTo = defaultAccessList;
+    this.comments = getUserComments(id);
 }
+
+var user = new User(1782);
 
 ---
 
-## Revision of the basics of React
+## With 'new' or without
 
-1. `npx create-react-app my-app`
-2. `cd my-app`
-3. `npm start`
-
----
-
-## Stateless components
-
-```jsx
-function App(props) {
-  return <div>Hello {props.name}!</div>
-}
-```
-
-- The simplest type of component.
-- A regular Javascript function (can be an arrow function)
-- Take props as the first parameter
-- Have no state
-- Rerender every time the parent rerenders
+```js
+var firstUser = new User(1); // User
+var secondUser = User(2); // undefined
 
 ---
 
-## Passing props to children
-
-```jsx
-function Parent({ child1Name, child2Name }) {
-  return (
-    <div>
-      <Child name={child1Name} text="Hello" />
-      <Child name={child2Name} text="Goodbye" />
-    </div>
-  )
-}
-
-function Child({ text, name }) {
-  return (
-    <div>
-      {text} {props.name}!
-    </div>
-  )
-}
-```
-
----
-
-export default SplitRight
-
-```jsx
-function ReturnsMultipleChildren() {
-  // NOTE: <> === <React.Fragment>
-  return (
-    <>
-      <Child1 />
-      <Child2 />
-      <Child3 />
-    </>
-  )
-}
-```
-
-## How to avoid unnecessary `div`s?
-
-```jsx
-function ReturnsMultipleChildren() {
-  return (
-    <div>
-      <Child1 />
-      <Child2 />
-      <Child3 />
-    </div>
-  )
-}
-```
-
----
-
-export default SplitRight
-
-```jsx
-class App extends React.Component {
-  state = {
-    value: 0,
-  }
-
-  render() {
-    return (
-      <>
-        <div>Value: {this.state.value}</div>
-        <button onClick={this._increment}>Increment</button>
-      </>
-    )
-  }
-
-  _increment = () => {
-    this.setState({
-      value: this.state.value + 1,
-    })
-  }
-}
-```
-
-## Class components
-
-- Have state
-- A regular Javascript class that extends `React.Component`
-- Rerender every time the parent updates or the state changes
-
----
-
-## Component lifecycle
-
-https://reactjs.org/docs/react-component.html#the-component-lifecycle
-
-- Class methods called when something is happening with that component
-
-Important ones:
-
-- `componentDidMount`
-- `componentDidUpdate`
-- `componentWillUnmount`
-
----
-
-## Component optimizations
-
-`shouldComponentUpdate` method
-
-rerender component based on some criteria
-
-```jsx
-class SomeComponent extends React.Component {
-  // ...
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.name === nextProps.name) {
-      return false
-    }
-
-    return true
-  }
-}
-```
-
----
-
-## `React.PureComponent`
-
-- A substitute for `React.Component`
-- Implements `shouldComponentUpdate`
-- Performs a shallow comparison of `props` and `state`
-- Only updates when at least one property of `props` or `state` differs
-
-```jsx
-class SomeComponent extends React.PureComponent {
-  render() {
-    return <div>{this.props.name}</div>
-  }
-}
-
-// NOTE: SomeComponent will never update because props are always the same
-const App = () => <SomeComponent name="Foo" />
-```
-
----
 
 ## Questions
 
