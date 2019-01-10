@@ -78,6 +78,75 @@ var secondUser = User(2); // undefined
 
 ---
 
+## Defined return
+
+1. function returns primitive - constructor ignores return, and returns 'this'
+2. function returns object - 'this' will be ignored, and object returned.
+
+---
+
+## Singleton
+
+```js
+var firstInstance = new Singleton;
+var secondInstance = new Singleton;
+
+firstInstance === secondInstance // true;
+
+---
+
+```js
+function User(id) {
+    this.id = id;
+    this.created = Date.now();
+    this.banned = false;
+    this.allowComments = true;
+    this.comments = getUserComments(id);
+    this.getUserComments = function() {
+        //smth;
+    }
+    this.hasAccessTo = defaultAccessList;
+    this.banUser = function () {
+        this.banned = true;
+    };
+    this.unBanUser = function () {
+        this.banned = false;
+    };
+}
+
+---
+
+```js
+var emptyObj = {};
+
+---
+
+```js
+var emptyObj = {};
+
+emptyObj.toString // ƒ toString() { [native code] }
+emptyObj.toString() // [object Object]
+
+---
+
+```js
+var five = 5;
+
+---
+
+```js
+var five = 5;
+
+five.toString // ƒ toString() { [native code] }
+five.toString() // 5
+
+---
+
+<ImageWithLabel label="Empty Object">
+  <img src="./static/empty-obj.png" />
+</ImageWithLabel>
+
+---
 
 ## Questions
 
