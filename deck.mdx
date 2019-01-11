@@ -282,10 +282,17 @@ Object.create(protoObject); // {__proto__: protoObject}
 
 ---
 
+## Object.assign
+
+```js
+Object.assign(target, source); // {...target, ...source}
+
+---
+
 ## Prototypal Chaning
 
 ```js
-Admin.prototype = Object.create(User.prototype); // {__proto__: protoObject}
+Admin.prototype = Object.create(User.prototype);
 
 ---
 
@@ -298,19 +305,27 @@ Admin.prototype = Object.create(User.prototype); // {__proto__: protoObject}
     }
 
     Admin.prototype = Object.create(User.prototype);
+    Admin.prototype.constructor = Admin,
+    Admin.prototype.hasAccessTo = adminAccessList,
+    Admin.prototype.deleteComments = function() { //smth; },
+    Admin.prototype.closeProject = function() { //smth; },
+    Admin.prototype.deleteTicket = function() { //smth; }
 
-    Object.assign(
-        Admin.prototype,
-         {
-            constructor: Admin,
-            hasAccessTo: adminAccessList,
-            deleteComments: function() { //smth; },
-            closeProject: function() { //smth; },
-            deleteTicket: function() { //smth; }
-         }
-    );
-```
 ---
+
+---
+
+```js
+    function Admin(id) {
+        User.apply(this, arguments);
+    }
+
+    Admin.prototype = Object.create(User.prototype);
+    Admin.prototype.constructor = Admin,
+    Admin.prototype.hasAccessTo = adminAccessList,
+    Admin.prototype.deleteComments = function() { //smth; },
+    Admin.prototype.closeProject = function() { //smth; },
+    Admin.prototype.deleteTicket = function() { //smth; }
 
 ---
 
