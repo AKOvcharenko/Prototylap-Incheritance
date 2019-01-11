@@ -211,6 +211,7 @@ function User(id) {
 }
 
 User.prototype = {
+    constructor: User,
     hasAccessTo: defaultAccessList,
     unBanUser: function() { this.banned = false; },
     banUser: function() { this.banned = true; },
@@ -245,6 +246,7 @@ function Admin(id) {
 }
 
 Admin.prototype = {
+    constructor: Admin,
     hasAccessTo: adminAccessList,
     unBanUser: function() {
         this.banned = false;
@@ -270,6 +272,45 @@ Admin.prototype = {
 ```js
 
 admin instance -> Admin.prototype -> User.prototype
+
+---
+
+## Object.create
+
+```js
+Object.create(protoObject); // {__proto__: protoObject}
+
+---
+
+## Prototypal Chaning
+
+```js
+Admin.prototype = Object.create(User.prototype); // {__proto__: protoObject}
+
+---
+
+```js
+    function Admin(id) {
+        this._id = id;
+        this._created = Date.now();
+        this._banned = false;
+        this.allowComments = true;
+    }
+
+    Admin.prototype = Object.create(User.prototype);
+
+    Object.assign(
+        Admin.prototype,
+         {
+            constructor: Admin,
+            hasAccessTo: adminAccessList,
+            deleteComments: function() { //smth; },
+            closeProject: function() { //smth; },
+            deleteTicket: function() { //smth; }
+         }
+    );
+```
+---
 
 ---
 
