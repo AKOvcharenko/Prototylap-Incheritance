@@ -70,32 +70,42 @@ var user = new User(1782);
 
 ---
 
+export default Split
+
 ## what is `this`?
 
 The JavaScript `this` keyword refers to the object it belongs to.
 
 1. In a method, `this` refers to the owner object.
-```js
-    obj.method(); //this -> obj;
-```
+
 2. In a function, `this` refers to window.
-```js
-    myBestFunc(); //this -> window;
-```
+
 3. In a function, in strict mode, `this` is undefined.
-```js
-    'use strict'
-    myBestFunc(); //this -> undefined;
-```
+
 4. In a constructor `this` refers to created instance.
-```js
-    new User; //this -> User instance;
-```
+
 5. In an event, `this` refers to the element that received the event.
+
 6. Methods like call(), and apply() can refer this to any object.
-```js
-    obj.method.call(anotherObj); //this -> anotherObj;
-```
+
+<div>
+    ```js
+        1. obj.method(); //this -> obj;
+
+        2. myBestFunc(); //this -> window;
+
+        3.
+            'use strict'
+            myBestFunc(); //this -> undefined;
+
+        4. new User; //this -> User instance;
+
+        5. document.querySelector('textarea').onBlur(myBestFunc);
+        //this -> blured textarea;
+
+        6. obj.method.call(anotherObj); //this -> anotherObj;
+    ```
+</div>
 
 ---
 
