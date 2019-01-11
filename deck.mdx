@@ -100,19 +100,21 @@ export default Split
   </Components.ol>
 </div>
 
-<div>
-    <Components.inlineCode>1. obj.method(); //this -> obj;</Components.inlineCode>
-    <Components.inlineCode>2. myBestFunc(); //this -> window;</Components.inlineCode>
-    <Components.inlineCode>3.
-                               'use strict'
-                               myBestFunc(); //this -> undefined;
-    </Components.inlineCode>
-    <Components.inlineCode>4. new User; //this -> User instance;</Components.inlineCode>
-    <Components.inlineCode>5. document.querySelector('textarea').onBlur(myBestFunc);
-                            //this -> blured textarea;
-    </Components.inlineCode>
-    <Components.inlineCode>6. obj.method.call(anotherObj); //this -> anotherObj;</Components.inlineCode>
-</div>
+```js
+    1. obj.method(); //this -> obj;
+
+    2. myBestFunc(); //this -> window;
+
+    3.
+       'use strict'
+       myBestFunc(); //this -> undefined;
+
+    4. new User; //this -> User instance;
+
+    5. document.querySelector('textarea').onBlur(myBestFunc);
+       //this -> blured textarea;
+
+   6. obj.method.call(anotherObj); //this -> anotherObj;
 
 ---
 
@@ -235,19 +237,11 @@ var admin = {
     banUser: function() {
         this.banned = true;
     },
-    getUserComments: function() {
-        //smth;
-    },
+    getUserComments: function() { //smth; },
     hasAccessTo: adminAccessList,
-    deleteComments: function() {
-        //smth;
-    },
-    closeProject: function() {
-        //smth;
-    },
-    deleteTicket: function() {
-        //smth;
-    }
+    deleteComments: function() { //smth; },
+    closeProject: function() { //smth; },
+    deleteTicket: function() { //smth; }
 }
 
 ---
@@ -268,19 +262,11 @@ Admin.prototype = {
     banUser: function() {
         this.banned = true;
     },
-    getUserComments: function() {
-        //smth;
-    },
+    getUserComments: function() { //smth; },
     hasAccessTo: adminAccessList,
-    deleteComments: function() {
-        //smth;
-    },
-    closeProject: function() {
-        //smth;
-    },
-    deleteTicket: function() {
-        //smth;
-    }
+    deleteComments: function() { //smth; },
+    closeProject: function() { //smth; },
+    deleteTicket: function() { //smth; }
 }
 
 ---
