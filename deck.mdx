@@ -152,10 +152,10 @@ function User(id) {
         //smth;
     }
     this.hasAccessTo = defaultAccessList;
-    this.banUser = function () {
+    this.banUser = function() {
         this.banned = true;
     };
-    this.unBanUser = function () {
+    this.unBanUser = function() {
         this.banned = false;
     };
 }
@@ -210,16 +210,84 @@ function User(id) {
 
 User.prototype = {
     hasAccessTo: defaultAccessList,
-    unBanUser: function () {
+    unBanUser: function() {
         this.banned = false;
     },
-    banUser: function () {
+    banUser: function() {
         this.banned = true;
     },
     getUserComments: function() {
         //smth;
     }
 }
+
+---
+
+```js
+var admin = {
+    id: id;
+    created: Date.now(),
+    banned: false,
+    allowComments: true,
+    unBanUser: function() {
+        this.banned = false;
+    },
+    banUser: function() {
+        this.banned = true;
+    },
+    getUserComments: function() {
+        //smth;
+    },
+    hasAccessTo: adminAccessList,
+    deleteComments: function() {
+        //smth;
+    },
+    closeProject: function() {
+        //smth;
+    },
+    deleteTicket: function() {
+        //smth;
+    }
+}
+
+---
+
+```js
+function Admin(id) {
+    this._id = id;
+    this._created = Date.now();
+    this._banned = false;
+    this.allowComments = true;
+}
+
+Admin.prototype = {
+    hasAccessTo: adminAccessList,
+    unBanUser: function() {
+        this.banned = false;
+    },
+    banUser: function() {
+        this.banned = true;
+    },
+    getUserComments: function() {
+        //smth;
+    },
+    hasAccessTo: adminAccessList,
+    deleteComments: function() {
+        //smth;
+    },
+    closeProject: function() {
+        //smth;
+    },
+    deleteTicket: function() {
+        //smth;
+    }
+}
+
+---
+
+<ImageWithLabel>
+  <img src="./static/array-incheritance.png" />
+</ImageWithLabel>
 
 ---
 
