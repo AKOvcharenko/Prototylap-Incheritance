@@ -114,7 +114,7 @@ export default Split
     5. document.querySelector('textarea').onBlur(myBestFunc);
        //this -> blured textarea;
 
-   6. obj.method.call(anotherObj); //this -> anotherObj;
+    6. obj.method.call(anotherObj); //this -> anotherObj;
 
 ---
 
@@ -212,15 +212,9 @@ function User(id) {
 
 User.prototype = {
     hasAccessTo: defaultAccessList,
-    unBanUser: function() {
-        this.banned = false;
-    },
-    banUser: function() {
-        this.banned = true;
-    },
-    getUserComments: function() {
-        //smth;
-    }
+    unBanUser: function() { this.banned = false; },
+    banUser: function() { this.banned = true; },
+    getUserComments: function() { //smth; }
 }
 
 ---
@@ -231,12 +225,8 @@ var admin = {
     created: Date.now(),
     banned: false,
     allowComments: true,
-    unBanUser: function() {
-        this.banned = false;
-    },
-    banUser: function() {
-        this.banned = true;
-    },
+    unBanUser: function() { this.banned = false; },
+    banUser: function() { this.banned = true; },
     getUserComments: function() { //smth; },
     hasAccessTo: adminAccessList,
     deleteComments: function() { //smth; },
@@ -271,8 +261,14 @@ Admin.prototype = {
 
 ---
 
+```js
+
+admin instance -> Admin.prototype -> User.prototype
+
+---
+
 <ImageWithLabel>
-  <img src="./static/array-incheritance.png" />
+  <img src="./static/array-inheritance.png" />
 </ImageWithLabel>
 
 ---
