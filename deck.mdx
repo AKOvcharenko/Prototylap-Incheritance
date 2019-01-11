@@ -72,39 +72,46 @@ var user = new User(1782);
 
 export default Split
 
-## what is `this`?
-
-The JavaScript `this` keyword refers to the object it belongs to.
-
-1. In a method, `this` refers to the owner object.
-
-2. In a function, `this` refers to window.
-
-3. In a function, in strict mode, `this` is undefined.
-
-4. In a constructor `this` refers to created instance.
-
-5. In an event, `this` refers to the element that received the event.
-
-6. Methods like call(), and apply() can refer this to any object.
+<div>
+  <Components.h2>
+    What is <Components.inlineCode>this</Components.inlineCode>?
+  </Components.h2>
+  <Components.p>The JavaScript <Components.inlineCode>this</Components.inlineCode>` keyword refers to the object it belongs to.</Components.p>
+  <br />
+  <Components.ol>
+    <Components.li>
+      In a method, <Components.inlineCode>this</Components.inlineCode> refers to the owner object.
+    </Components.li>
+    <Components.li>
+      In a function, <Components.inlineCode>this</Components.inlineCode> refers to window.
+    </Components.li>
+    <Components.li>
+     In a function, in strict mode, <Components.inlineCode>this</Components.inlineCode> is undefined.
+    </Components.li>
+    <Components.li>
+      In a constructor <Components.inlineCode>this</Components.inlineCode> refers to created instance.
+    </Components.li>
+    <Components.li>
+     In an event, <Components.inlineCode>this</Components.inlineCode> refers to the element that received the event.
+    </Components.li>
+    <Components.li>
+      Methods like call(), and apply() can refer <Components.inlineCode>this</Components.inlineCode> to any object.
+    </Components.li>
+  </Components.ol>
+</div>
 
 <div>
-    ```js
-        1. obj.method(); //this -> obj;
-
-        2. myBestFunc(); //this -> window;
-
-        3.
-            'use strict'
-            myBestFunc(); //this -> undefined;
-
-        4. new User; //this -> User instance;
-
-        5. document.querySelector('textarea').onBlur(myBestFunc);
-        //this -> blured textarea;
-
-        6. obj.method.call(anotherObj); //this -> anotherObj;
-    ```
+    <Components.inlineCode>1. obj.method(); //this -> obj;</Components.inlineCode>
+    <Components.inlineCode>2. myBestFunc(); //this -> window;</Components.inlineCode>
+    <Components.inlineCode>3.
+                               'use strict'
+                               myBestFunc(); //this -> undefined;
+    </Components.inlineCode>
+    <Components.inlineCode>4. new User; //this -> User instance;</Components.inlineCode>
+    <Components.inlineCode>5. document.querySelector('textarea').onBlur(myBestFunc);
+                            //this -> blured textarea;
+    </Components.inlineCode>
+    <Components.inlineCode>6. obj.method.call(anotherObj); //this -> anotherObj;</Components.inlineCode>
 </div>
 
 ---
