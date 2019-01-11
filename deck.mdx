@@ -70,6 +70,35 @@ var user = new User(1782);
 
 ---
 
+## what is `this`?
+
+The JavaScript `this` keyword refers to the object it belongs to.
+
+1. In a method, `this` refers to the owner object.
+```js
+    obj.method(); //this -> obj;
+```
+2. In a function, `this` refers to window.
+```js
+    myBestFunc(); //this -> window;
+```
+3. In a function, in strict mode, `this` is undefined.
+```js
+    'use strict'
+    myBestFunc(); //this -> undefined;
+```
+4. In a constructor `this` refers to created instance.
+```js
+    new User; //this -> User instance;
+```
+5. In an event, `this` refers to the element that received the event.
+6. Methods like call(), and apply() can refer this to any object.
+```js
+    obj.method.call(anotherObj); //this -> anotherObj;
+```
+
+---
+
 ## With 'new' or without
 
 ```js
@@ -80,8 +109,8 @@ var secondUser = User(2); // undefined
 
 ## Defined return
 
-1. function returns primitive - constructor ignores return, and returns 'this'
-2. function returns object - 'this' will be ignored, and object returned.
+1. function returns primitive - constructor ignores return, and returns `this`.
+2. function returns object - `this` will be ignored, and object returned.
 
 ---
 
@@ -101,7 +130,7 @@ function User(id) {
     this.created = Date.now();
     this.banned = false;
     this.allowComments = true;
-    this.comments = getUserComments(id);
+    this.comments = this.getUserComments();
     this.getUserComments = function() {
         //smth;
     }
@@ -125,7 +154,7 @@ var emptyObj = {};
 var emptyObj = {};
 
 emptyObj.toString // ƒ toString() { [native code] }
-emptyObj.toString() // [object Object]
+emptyObj.toString() // '[object Object]'
 
 ---
 
@@ -138,13 +167,42 @@ var five = 5;
 var five = 5;
 
 five.toString // ƒ toString() { [native code] }
-five.toString() // 5
+five.toString() // '5'
 
 ---
 
-<ImageWithLabel label="Empty Object">
+<ImageWithLabel>
   <img src="./static/empty-obj.png" />
 </ImageWithLabel>
+
+---
+
+<ImageWithLabel>
+  <img src="./static/built-in-prototypes.png" />
+</ImageWithLabel>
+
+---
+
+```js
+function User(id) {
+    this._id = id;
+    this._created = Date.now();
+    this._banned = false;
+    this.allowComments = true;
+}
+
+User.prototype = {
+    hasAccessTo: defaultAccessList,
+    unBanUser: function () {
+        this.banned = false;
+    },
+    banUser: function () {
+        this.banned = true;
+    },
+    getUserComments: function() {
+        //smth;
+    }
+}
 
 ---
 
