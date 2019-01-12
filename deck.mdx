@@ -202,6 +202,16 @@ five.toString() // '5'
 
 ---
 
+## Task 2
+
+1. Object.prototype.toString should returns
+    ```js
+        `Big Brother watching You! ${default method result}`
+    ```
+
+2. Add to the prototype of all functions the method defer(ms), that runs the function after ms milliseconds.
+---
+
 ```js
 function User(id) {
     this._id = id;
@@ -282,13 +292,6 @@ Object.create(protoObject); // {__proto__: protoObject}
 
 ---
 
-## Object.assign
-
-```js
-Object.assign(target, source); // {...target, ...source}
-
----
-
 ## Prototypal Chaning
 
 ```js
@@ -310,18 +313,14 @@ Admin.prototype = Object.create(User.prototype);
         {
             constructor: Admin,
             hasAccessTo: adminAccessList,
-            unBanUser: function() {
-                this.banned = false;
-            },
-            banUser: function() {
-                this.banned = true;
-            },
+            unBanUser: function() { this.banned = false; },
+            banUser: function() { this.banned = true; },
             getUserComments: function() { //smth; },
             hasAccessTo: adminAccessList,
             deleteComments: function() { //smth; },
             closeProject: function() { //smth; },
             deleteTicket: function() { //smth; }
-          }
+        }
     )
 
 ---
@@ -329,11 +328,6 @@ Admin.prototype = Object.create(User.prototype);
 ```js
     function Admin(id) {
         User.apply(this, arguments);
-
-        this._id = id;
-        this._created = Date.now();
-        this._banned = false;
-        this.allowComments = true;
     }
 
     Object.assign(
@@ -341,19 +335,55 @@ Admin.prototype = Object.create(User.prototype);
         {
             constructor: Admin,
             hasAccessTo: adminAccessList,
-            unBanUser: function() {
-                this.banned = false;
-            },
-            banUser: function() {
-                this.banned = true;
-            },
+            unBanUser: function() { this.banned = false; },
+            banUser: function() { this.banned = true; },
             getUserComments: function() { //smth; },
             hasAccessTo: adminAccessList,
             deleteComments: function() { //smth; },
             closeProject: function() { //smth; },
             deleteTicket: function() { //smth; }
-          }
+        }
     )
+
+---
+
+## Task 3
+
+1. Create Class SuperHero which takes arguments: team, name, power, exp.
+2. Hero instance should has methods:
+    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns sting - I kick asses with power `power`.
+    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
+
+---
+## Task 4
+
+1. Create Class Wuss which takes arguments: team, name, power, exp.
+2. Wuss Class instance should inherits SuperHero Class, and should has methods:
+    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns sting - I can not kick asses :C my power is `power`.
+    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
+
+---
+
+## Task 5
+
+1. Create Class Berserker which takes arguments: team, name, power, exp.
+2. Berserker Class instance should inherits SuperHero Class, and should has methods:
+    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns sting - I can not kick asses :C my power is `power`.
+    - manageTheTeam: returns sting - I can not manage team, I am too strong for this, my power is `power`.
+
+---
+
+## Task 5
+
+1. Create Class Imba which takes arguments: team, name, power, exp.
+2. Imba Class instance should inherits SuperHero Class, and should has methods:
+    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns sting - I kick asses with power `power`.
+    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
+    -doAnything: returns sting - I can do anything, because I am imba.
 
 ---
 
