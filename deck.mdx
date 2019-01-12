@@ -444,31 +444,29 @@ Admin.prototype = Object.create(User.prototype);
 ## ES6 Class Inheritance. `extends`
 
 ---
+```js
 
-    ```js
+class User {
+  constructor(id) {
+    this.id = id;
+  }
 
-    class User {
-      constructor(id) {
-        this.id = id;
-      }
+  unBanUser() { this.banned = false; },
+  banUser() { this.banned = true; },
+  getUserComments() { //smth; }
+}
 
-      unBanUser() { this.banned = false; },
-      banUser() { this.banned = true; },
-      getUserComments() { //smth; }
+class Admin extends User {
+    constructor(id) {
+        super(id);
+        this.adminFor = 'appformix';
     }
 
-    class Admin extends User {
-        constructor(id) {
-            super(id);
-            this.adminFor = 'appformix';
-        }
+    deleteComments: function() { //smth; },
+    closeProject: function() { //smth; },
+    deleteTicket: function() { //smth; }
+}
 
-        deleteComments: function() { //smth; },
-        closeProject: function() { //smth; },
-        deleteTicket: function() { //smth; }
-    }
-
-    ```
 ---
 
 ## Questions
