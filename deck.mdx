@@ -305,27 +305,55 @@ Admin.prototype = Object.create(User.prototype);
     }
 
     Admin.prototype = Object.create(User.prototype);
-    Admin.prototype.constructor = Admin,
-    Admin.prototype.hasAccessTo = adminAccessList,
-    Admin.prototype.deleteComments = function() { //smth; },
-    Admin.prototype.closeProject = function() { //smth; },
-    Admin.prototype.deleteTicket = function() { //smth; }
-
----
+    Object.assign(
+        Admin.prototype,
+        {
+            constructor: Admin,
+            hasAccessTo: adminAccessList,
+            unBanUser: function() {
+                this.banned = false;
+            },
+            banUser: function() {
+                this.banned = true;
+            },
+            getUserComments: function() { //smth; },
+            hasAccessTo: adminAccessList,
+            deleteComments: function() { //smth; },
+            closeProject: function() { //smth; },
+            deleteTicket: function() { //smth; }
+          }
+    )
 
 ---
 
 ```js
     function Admin(id) {
         User.apply(this, arguments);
+
+        this._id = id;
+        this._created = Date.now();
+        this._banned = false;
+        this.allowComments = true;
     }
 
-    Admin.prototype = Object.create(User.prototype);
-    Admin.prototype.constructor = Admin,
-    Admin.prototype.hasAccessTo = adminAccessList,
-    Admin.prototype.deleteComments = function() { //smth; },
-    Admin.prototype.closeProject = function() { //smth; },
-    Admin.prototype.deleteTicket = function() { //smth; }
+    Object.assign(
+        Admin.prototype,
+        {
+            constructor: Admin,
+            hasAccessTo: adminAccessList,
+            unBanUser: function() {
+                this.banned = false;
+            },
+            banUser: function() {
+                this.banned = true;
+            },
+            getUserComments: function() { //smth; },
+            hasAccessTo: adminAccessList,
+            deleteComments: function() { //smth; },
+            closeProject: function() { //smth; },
+            deleteTicket: function() { //smth; }
+          }
+    )
 
 ---
 
