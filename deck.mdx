@@ -313,10 +313,6 @@ Admin.prototype = Object.create(User.prototype);
         {
             constructor: Admin,
             hasAccessTo: adminAccessList,
-            unBanUser: function() { this.banned = false; },
-            banUser: function() { this.banned = true; },
-            getUserComments: function() { //smth; },
-            hasAccessTo: adminAccessList,
             deleteComments: function() { //smth; },
             closeProject: function() { //smth; },
             deleteTicket: function() { //smth; }
@@ -334,10 +330,6 @@ Admin.prototype = Object.create(User.prototype);
         Admin.prototype,
         {
             constructor: Admin,
-            hasAccessTo: adminAccessList,
-            unBanUser: function() { this.banned = false; },
-            banUser: function() { this.banned = true; },
-            getUserComments: function() { //smth; },
             hasAccessTo: adminAccessList,
             deleteComments: function() { //smth; },
             closeProject: function() { //smth; },
@@ -376,7 +368,7 @@ Admin.prototype = Object.create(User.prototype);
 
 ---
 
-## Task 5
+## Task 6
 
 1. Create Class Imba which takes arguments: team, name, power, exp.
 2. Imba Class instance should inherits SuperHero Class, and should has methods:
@@ -407,7 +399,7 @@ Admin.prototype = Object.create(User.prototype);
 ## Mixin as a function
 
 ```js
-    var messageMixin = function (){
+    var messageMixin = function() {
         this.sendMessage  = function() { sendMessageRequest(this.id) };
         this.deleteAllMessages = function() { deleteAllMessages(this.id) };
 
@@ -417,8 +409,64 @@ Admin.prototype = Object.create(User.prototype);
     messageMixin.call(User.prototype);
 ---
 
-## ES6 Classes.
+## ES6 Classes. `Class`
 
+---
+
+```js
+    class SuperHero {
+
+      constructor(name) {
+        this.name = name;
+      }
+
+      greet() {
+        alert(`hello there! it is me - ${this.name}.`);
+      }
+
+    }
+
+    let deadPool = new User('Deadpool');
+    deadPool.greet(); // hello there! it is me - Deadpool.
+
+---
+
+## Difference with ES5
+
+    1. Can not execute without `new`.
+    2. All methods from prototype will not be present in for..in loop.
+    3. All methods work in strict mode.
+    4. You can not put property to prototype(during class initialization).
+    5. Class behaves like let variable.
+
+---
+
+## ES6 Class Inheritance. `extends`
+
+    ```js
+
+    class User {
+      constructor(id) {
+        this.id = id;
+      }
+
+      unBanUser() { this.banned = false; },
+      banUser() { this.banned = true; },
+      getUserComments() { //smth; }
+    }
+
+    class Admin extends User {
+        constructor(id) {
+            super(id);
+            this.adminFor = 'appformix';
+        }
+
+        deleteComments: function() { //smth; },
+        closeProject: function() { //smth; },
+        deleteTicket: function() { //smth; }
+    }
+
+    ```
 ---
 
 ## Questions
@@ -426,11 +474,3 @@ Admin.prototype = Object.create(User.prototype);
 ---
 
 ### Thank you for your participation.
-
-<ImageWithLabel label="Jak żyć na froncie?">
-  <img src="./static/logo-jak-zyc-na-froncie.png" />
-</ImageWithLabel>
-
-```notes
-On 01/14/2019 there is going to be a workshop on prototypal inheritance in Javascript.
-```
