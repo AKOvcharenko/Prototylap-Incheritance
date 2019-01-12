@@ -76,7 +76,7 @@ export default Split
   <Components.h2>
     What is <Components.inlineCode>this</Components.inlineCode>?
   </Components.h2>
-  <Components.p>The JavaScript <Components.inlineCode>this</Components.inlineCode>` keyword refers to the object it belongs to.</Components.p>
+  <Components.p>The JavaScript <Components.inlineCode>this</Components.inlineCode> keyword(in most cases) refers to the object, and value determined by how a function is called.</Components.p>
   <br />
   <Components.ol>
     <Components.li>
@@ -206,7 +206,7 @@ five.toString() // '5'
 
 1. Object.prototype.toString should returns
     ```js
-        `Big Brother watching You! ${default method result}`
+        `Big Brother watching You! ${defaultMethodResult}`
     ```
 
 2. Add to the prototype of all functions the method defer(ms), that runs the function after ms milliseconds.
@@ -371,7 +371,7 @@ Admin.prototype = Object.create(User.prototype);
 1. Create Class Berserker which takes arguments: team, name, power, exp.
 2. Berserker Class instance should inherits SuperHero Class, and should has methods:
     - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
-    - kickAsses: returns sting - I can not kick asses :C my power is `power`.
+    - kickAsses: returns sting - I kick asses with power `power`.
     - manageTheTeam: returns sting - I can not manage team, I am too strong for this, my power is `power`.
 
 ---
@@ -383,7 +383,41 @@ Admin.prototype = Object.create(User.prototype);
     - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
     - kickAsses: returns sting - I kick asses with power `power`.
     - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
-    -doAnything: returns sting - I can do anything, because I am imba.
+    - doAnything: returns sting - I can do anything, because I am imba.
+
+---
+
+## Mixin in javaScript
+
+ Mixin in javaScript is a object or function that contains methods for use by classes.
+
+---
+
+## Mixin as an object
+
+```js
+    var messageMixin = {
+        sendMessage: function() { sendMessageRequest(this.id) },
+        deleteAllMessages: function() { deleteAllMessages(this.id) }
+    };
+
+    Object.assign(User.prototype, messageMixin);
+---
+
+## Mixin as a function
+
+```js
+    var messageMixin = function (){
+        this.sendMessage  = function() { sendMessageRequest(this.id) };
+        this.deleteAllMessages = function() { deleteAllMessages(this.id) };
+
+        return this;
+    };
+
+    messageMixin.call(User.prototype);
+---
+
+## ES6 Classes.
 
 ---
 
