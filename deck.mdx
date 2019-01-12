@@ -343,18 +343,18 @@ Admin.prototype = Object.create(User.prototype);
 
 1. Create Class SuperHero which takes arguments: team, name, power, exp.
 2. Hero instance should has methods:
-    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
-    - kickAsses: returns sting - I kick asses with power `power`.
-    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
+    - greet: returns string - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns string - I kick asses with power `power`.
+    - manageTheTeam: returns string - I manage `team` team, with experience `exp`.
 
 ---
 ## Task 4
 
 1. Create Class Wuss which takes arguments: team, name, power, exp.
 2. Wuss Class instance should inherits SuperHero Class, and should has methods:
-    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
-    - kickAsses: returns sting - I can not kick asses :C my power is `power`.
-    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
+    - greet: returns string - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns string - I can not kick asses :'(, my power is `power`.
+    - manageTheTeam: returns string - I manage `team` team, with experience `exp`.
 
 ---
 
@@ -362,9 +362,9 @@ Admin.prototype = Object.create(User.prototype);
 
 1. Create Class Berserker which takes arguments: team, name, power, exp.
 2. Berserker Class instance should inherits SuperHero Class, and should has methods:
-    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
-    - kickAsses: returns sting - I kick asses with power `power`.
-    - manageTheTeam: returns sting - I can not manage team, I am too strong for this, my power is `power`.
+    - greet: returns string - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns string - I kick asses with power `power`.
+    - manageTheTeam: returns string - I can not manage team, I am too strong for this, my power is `power`.
 
 ---
 
@@ -372,10 +372,10 @@ Admin.prototype = Object.create(User.prototype);
 
 1. Create Class Imba which takes arguments: team, name, power, exp.
 2. Imba Class instance should inherits SuperHero Class, and should has methods:
-    - greet: returns sting - hello there! my name is `name`, and I am `team`'s team member.
-    - kickAsses: returns sting - I kick asses with power `power`.
-    - manageTheTeam: returns sting - I manage `team` team, with experience `exp`.
-    - doAnything: returns sting - I can do anything, because I am imba.
+    - greet: returns string - hello there! my name is `name`, and I am `team`'s team member.
+    - kickAsses: returns string - I kick asses with power `power`.
+    - manageTheTeam: returns string - I manage `team` team, with experience `exp`.
+    - doAnything: returns string - I can do anything, because I am imba.
 
 ---
 
@@ -426,14 +426,14 @@ Admin.prototype = Object.create(User.prototype);
 
     }
 
-    let deadPool = new User('Deadpool');
+    let deadPool = new SuperHero('Deadpool');
     deadPool.greet(); // hello there! it is me - Deadpool.
 
 ---
 
 ## Difference with ES5
 
-    1. Can not execute without `new`.
+    1. Can not be executed without `new`.
     2. All methods from prototype will not be present in for..in loop.
     3. All methods work in strict mode.
     4. You can not put property to prototype(during class initialization).
@@ -442,6 +442,8 @@ Admin.prototype = Object.create(User.prototype);
 ---
 
 ## ES6 Class Inheritance. `extends`
+
+---
 
     ```js
 
