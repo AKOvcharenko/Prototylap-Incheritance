@@ -326,6 +326,7 @@ Admin.prototype = Object.create(User.prototype);
         User.apply(this, arguments);
     }
 
+    Admin.prototype = Object.create(User.prototype);
     Object.assign(
         Admin.prototype,
         {
