@@ -55,7 +55,7 @@ Constructor is a function which creates an "instance", but via 'new' keyword.
 ```js
 function User(id) {
     function getUserComments(id) {
-       //smth;
+       /*smth;*/
     }
 
     this.id = id;
@@ -151,7 +151,7 @@ function User(id) {
     this.allowComments = true;
     this.comments = this.getUserComments();
     this.getUserComments = function() {
-        //smth;
+        /*smth;*/
     }
     this.hasAccessTo = defaultAccessList;
     this.banUser = function() {
@@ -225,7 +225,7 @@ User.prototype = {
     hasAccessTo: defaultAccessList,
     unBanUser: function() { this.banned = false; },
     banUser: function() { this.banned = true; },
-    getUserComments: function() { //smth; }
+    getUserComments: function() { /*smth;*/ }
 }
 
 ---
@@ -238,11 +238,11 @@ var admin = {
     allowComments: true,
     unBanUser: function() { this.banned = false; },
     banUser: function() { this.banned = true; },
-    getUserComments: function() { //smth; },
+    getUserComments: function() { /*smth;*/ },
     hasAccessTo: adminAccessList,
-    deleteComments: function() { //smth; },
-    closeProject: function() { //smth; },
-    deleteTicket: function() { //smth; }
+    deleteComments: function() { /*smth;*/ },
+    closeProject: function() { /*smth;*/ },
+    deleteTicket: function() { /*smth;*/ }
 }
 
 ---
@@ -264,11 +264,11 @@ Admin.prototype = {
     banUser: function() {
         this.banned = true;
     },
-    getUserComments: function() { //smth; },
+    getUserComments: function() { /*smth;*/ },
     hasAccessTo: adminAccessList,
-    deleteComments: function() { //smth; },
-    closeProject: function() { //smth; },
-    deleteTicket: function() { //smth; }
+    deleteComments: function() { /*smth;*/ },
+    closeProject: function() { /*smth;*/ },
+    deleteTicket: function() { /*smth;*/ }
 }
 
 ---
@@ -313,9 +313,9 @@ Admin.prototype = Object.create(User.prototype);
         {
             constructor: Admin,
             hasAccessTo: adminAccessList,
-            deleteComments: function() { //smth; },
-            closeProject: function() { //smth; },
-            deleteTicket: function() { //smth; }
+            deleteComments: function() { /*smth;*/ },
+            closeProject: function() { /*smth;*/ },
+            deleteTicket: function() { /*smth;*/ }
         }
     )
 
@@ -332,9 +332,9 @@ Admin.prototype = Object.create(User.prototype);
         {
             constructor: Admin,
             hasAccessTo: adminAccessList,
-            deleteComments: function() { //smth; },
-            closeProject: function() { //smth; },
-            deleteTicket: function() { //smth; }
+            deleteComments: function() { /*smth;*/ },
+            closeProject: function() { /*smth;*/ },
+            deleteTicket: function() { /*smth;*/ }
         }
     )
 
@@ -452,9 +452,9 @@ class User {
     this.id = id;
   }
 
-  unBanUser() { this.banned = false; },
-  banUser() { this.banned = true; },
-  getUserComments() { //smth; }
+  unBanUser() { this.banned = false; };
+  banUser() { this.banned = true; };
+  getUserComments() { /*smth;*/ };
 }
 
 class Admin extends User {
@@ -463,9 +463,9 @@ class Admin extends User {
         this.adminFor = 'appformix';
     }
 
-    deleteComments: function() { //smth; },
-    closeProject: function() { //smth; },
-    deleteTicket: function() { //smth; }
+    deleteComments() { /*smth;*/ };
+    closeProject() { /*smth;*/ };
+    deleteTicket() { /*smth;*/ };
 }
 
 ---
